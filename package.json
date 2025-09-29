@@ -1,0 +1,66 @@
+{
+  "name": "@brightdata/n8n-nodes-brightdata",
+  "version": "1.0.4",
+  "description": "Bright Data service for scraping purposes in n8n",
+  "keywords": [
+    "n8n",
+    "n8n-community-node-package",
+    "bright data",
+    "scraping",
+    "proxy",
+    "fingerprinting"
+  ],
+  "author": {
+    "name": "Bright Data"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brightdata-com/n8n-nodes-brightdata.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "clear": "rm -rf dist",
+    "build": "npm run clear && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BrightDataApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/BrightData/BrightData.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint": "^9.20.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "globals": "^15.15.0",
+    "gulp": "^4.0.2",
+    "jest": "^29.7.0",
+    "n8n-workflow": "^1.82.0",
+    "prettier": "^3.3.2",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
+  "dependencies": {}
+}
